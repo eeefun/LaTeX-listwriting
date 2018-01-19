@@ -1,0 +1,48 @@
+//请在c++环境中编译。我用的是codeblocks
+#include <iostream>
+#include <fstream>
+#include <cstring>
+
+using namespace std;
+
+int main()
+{
+    ofstream o("latexlist.txt");
+    string name;
+    cout<<"请输入表格名："<<endl;
+    cin>>name;
+    o<<"\\begin{center}"<<endl;
+    o<<"\\begin{small} "<<name<<" \\end{small}"<<endl;
+
+    ifstream a("list.txt",ios::in);
+    char ch=0;
+    int n=0;
+    while(ch!='\n'){
+        a.get(ch);
+        if(ch==32)n++;
+    }
+    a.close();
+
+    o<<endl<<"\\begin{tabular}{c";
+    for(int i=0;i<n;i++){
+        o<<"|c";
+    }
+    o<<"} \\hline"<<endl;
+
+    ifstream b("list.txt",ios::in);
+    while(!b.eof()){
+        b.get(ch);
+        if(ch==32)o<<" & ";
+        else{
+            if(ch=='\n'){o<<"\\\\ \\hline"<<endl; n=0;}
+            else {o<<ch; n++;}
+        }
+    }
+    b.close();
+    o<<"\\\\ \\hline"<< endl;
+    o<<"\\end{tabular}"<<endl;
+    o<<"\\end{center}"<<endl;
+
+    o.close();
+    return 0;
+}
