@@ -1,0 +1,19 @@
+这是我调试程序时的list.txt：
+数量 1 2 3 4
+质量 22 33 44 23
+
+我输入的表格名称是：
+表1砝码质量
+
+得到的结果latexlist.txt：
+\begin{center}
+\begin{small} 表1砝码质量 \end{small}
+
+\begin{tabular}{c|c|c|c|c} \hline
+数量 & 1 & 2 & 3 & 4\\ \hline
+质量 & 22 & 33 & 44 & 233\\ \hline
+\end{tabular}
+\end{center}
+
+能够很好地导出PDF
+我用的是texmaker+texlive
