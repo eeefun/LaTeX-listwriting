@@ -19,7 +19,7 @@ int main()
     int n=0;
     while(ch!='\n'){
         a.get(ch);
-        if(ch==32)n++;
+        if(ch=='\t')n++;
     }
     a.close();
 
@@ -32,7 +32,7 @@ int main()
     ifstream b("list.txt",ios::in);
     while(!b.eof()){
         b.get(ch);
-        if(ch==32)o<<" & ";
+        if(ch=='\t')o<<" & ";
         else{
             if(ch=='\n'){o<<"\\\\ \\hline"<<endl; n=0;}
             else {o<<ch; n++;}
